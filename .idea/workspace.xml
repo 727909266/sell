@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b8c1644-553d-4db6-ad1f-6f562d9c1435" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/huhaoran/SellApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/huhaoran/SellApplication.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,10 +20,10 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/huhaoran/SellApplication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+              <caret line="7" column="3" lean-forward="false" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
               <folding>
-                <marker date="1540400090856" expanded="false" signature="240:245" ph=" { " />
-                <marker date="1540400090856" expanded="false" signature="296:299" ph=" }" />
+                <marker date="1540400517773" expanded="false" signature="241:246" ph=" { " />
+                <marker date="1540400517773" expanded="false" signature="297:300" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -219,7 +220,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -598,8 +599,8 @@
         <state relative-caret-position="225">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <marker date="1540400090856" expanded="false" signature="240:245" ph=" { " />
-            <marker date="1540400090856" expanded="false" signature="296:299" ph=" }" />
+            <marker date="1540400517773" expanded="false" signature="241:246" ph=" { " />
+            <marker date="1540400517773" expanded="false" signature="297:300" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -635,8 +636,8 @@
         <state relative-caret-position="225">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <marker date="1540400090856" expanded="false" signature="240:245" ph=" { " />
-            <marker date="1540400090856" expanded="false" signature="296:299" ph=" }" />
+            <marker date="1540400517773" expanded="false" signature="241:246" ph=" { " />
+            <marker date="1540400517773" expanded="false" signature="297:300" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -680,8 +681,8 @@
         <state relative-caret-position="225">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <marker date="1540400090856" expanded="false" signature="240:245" ph=" { " />
-            <marker date="1540400090856" expanded="false" signature="296:299" ph=" }" />
+            <marker date="1540400517773" expanded="false" signature="241:246" ph=" { " />
+            <marker date="1540400517773" expanded="false" signature="297:300" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -725,8 +726,8 @@
         <state relative-caret-position="225">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <marker date="1540400090856" expanded="false" signature="240:245" ph=" { " />
-            <marker date="1540400090856" expanded="false" signature="296:299" ph=" }" />
+            <marker date="1540400517773" expanded="false" signature="241:246" ph=" { " />
+            <marker date="1540400517773" expanded="false" signature="297:300" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -770,8 +771,8 @@
         <state relative-caret-position="225">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <marker date="1540400090856" expanded="false" signature="240:245" ph=" { " />
-            <marker date="1540400090856" expanded="false" signature="296:299" ph=" }" />
+            <marker date="1540400517773" expanded="false" signature="241:246" ph=" { " />
+            <marker date="1540400517773" expanded="false" signature="297:300" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -799,8 +800,8 @@
         <state relative-caret-position="225">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <marker date="1540400090856" expanded="false" signature="240:245" ph=" { " />
-            <marker date="1540400090856" expanded="false" signature="296:299" ph=" }" />
+            <marker date="1540400517773" expanded="false" signature="241:246" ph=" { " />
+            <marker date="1540400517773" expanded="false" signature="297:300" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -845,8 +846,8 @@
         <state relative-caret-position="225">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <marker date="1540400090856" expanded="false" signature="240:245" ph=" { " />
-            <marker date="1540400090856" expanded="false" signature="296:299" ph=" }" />
+            <marker date="1540400517773" expanded="false" signature="241:246" ph=" { " />
+            <marker date="1540400517773" expanded="false" signature="297:300" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -890,8 +891,8 @@
         <state relative-caret-position="225">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <marker date="1540400090856" expanded="false" signature="240:245" ph=" { " />
-            <marker date="1540400090856" expanded="false" signature="296:299" ph=" }" />
+            <marker date="1540400517773" expanded="false" signature="241:246" ph=" { " />
+            <marker date="1540400517773" expanded="false" signature="297:300" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -935,8 +936,8 @@
         <state relative-caret-position="225">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <marker date="1540400090856" expanded="false" signature="240:245" ph=" { " />
-            <marker date="1540400090856" expanded="false" signature="296:299" ph=" }" />
+            <marker date="1540400517773" expanded="false" signature="241:246" ph=" { " />
+            <marker date="1540400517773" expanded="false" signature="297:300" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -987,10 +988,10 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/huhaoran/SellApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+          <caret line="7" column="3" lean-forward="false" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
           <folding>
-            <marker date="1540400090856" expanded="false" signature="240:245" ph=" { " />
-            <marker date="1540400090856" expanded="false" signature="296:299" ph=" }" />
+            <marker date="1540400517773" expanded="false" signature="241:246" ph=" { " />
+            <marker date="1540400517773" expanded="false" signature="297:300" ph=" }" />
           </folding>
         </state>
       </provider>
