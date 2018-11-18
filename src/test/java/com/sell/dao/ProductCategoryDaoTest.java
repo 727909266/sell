@@ -1,15 +1,12 @@
-package com.huhaoran.dao;
+package com.sell.dao;
 
-import com.huhaoran.dataobject.ProductCategory;
+import com.sell.model.ProductCategory;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Optional;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,10 +23,11 @@ public class ProductCategoryDaoTest {
     @Test
     public void saveTest() {
         ProductCategory productCategory = new ProductCategory();
-        productCategory.setCategoryName("巧克力1");
+        productCategory.setCategoryName("红烧肉");
         productCategory.setCategoryType(3);
         productCategoryDao.saveModel(productCategory);
         System.out.println(productCategory.getCategoryId());
+        Assert.assertNotEquals(Integer.valueOf(0), productCategory.getCategoryId());
     }
 
     @Test

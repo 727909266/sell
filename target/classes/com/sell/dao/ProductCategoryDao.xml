@@ -2,11 +2,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.huhaoran.dao.ProductCategoryDao">
+<mapper namespace="com.sell.dao.ProductCategoryDao">
+    <!--
     <sql id="table_name"> product_category </sql>
-    <insert id="saveModel" useGeneratedKeys="true" keyProperty="categoryId" parameterType="com.huhaoran.dataobject.ProductCategory">
+    <insert id="saveModel" useGeneratedKeys="true" keyProperty="categoryId" parameterType="com.sell.model.ProductCategory">
         insert into
         <include refid="table_name"/>
         (category_name, category_type) values (#{categoryName}, #{categoryType});
     </insert>
+    -->
 </mapper>

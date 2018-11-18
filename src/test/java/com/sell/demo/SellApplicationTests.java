@@ -1,4 +1,4 @@
-package com.huhaoran.demo;
+package com.sell.demo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
