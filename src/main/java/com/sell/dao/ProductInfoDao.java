@@ -22,6 +22,9 @@ public interface ProductInfoDao {
     @Select({"select * from ",TABLE_NAME, " where product_id = #{id}"})
     ProductInfo findById(String id);
 
+    @Select({"select * from ",TABLE_NAME})
+    List<ProductInfo> findAll();
+
     @Insert({"insert into ", TABLE_NAME," (", INSER_FIELD,") values(#{productId},#{productName},#{productPrice},#{productStock},#{productDescription},#{productIcon},#{productStatus},#{categoryType})"})
     void saveModel(ProductInfo productInfo);
 }

@@ -10,4 +10,8 @@ import java.util.List;
 public interface ProductInfoService {
     List<ProductInfo> findByProductStatus(int status);
     void saveModel(ProductInfo productInfo);
+    List<ProductInfo> findAll(int page, int size);
+    //查询所有在架商品列表
+    //加库存
+    //减库存
 }
