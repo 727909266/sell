@@ -1,13 +1,18 @@
 package com.sell.viewobject;
 
-import lombok.Data;
+import lombok.*;
 
 /**
  * Created by huhaoran on 2018/11/21 0021.
  */
 @Data
-public class ResultVO<T> {
+@AllArgsConstructor
+@RequiredArgsConstructor
+@NoArgsConstructor
+public class ResultVO {
+    @NonNull
     private int code;
+    @NonNull
     private String msg;
-    private T data;
+    private Object data;
 }

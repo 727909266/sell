@@ -44,6 +44,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Override
     public List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypes) {
-        return productCategoryDao.findByCategoryTypeIn(Arrays.asList(1, 2, 3));
+
+        return productCategoryDao.findByCategoryTypeIn(categoryTypes);
     }
 }

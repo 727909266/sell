@@ -21,8 +21,8 @@ public interface ProductCategoryDao {
     @Select({"select * from ", TABLE_NAME, " where category_type = #{categoryType}"})
     List<ProductCategory> findByCategoryType(int categoryType);
 
-    @Select({"select * from ", TABLE_NAME, " where category_type in #{categoryTypes}"})
-    List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypes);
+    //@Select({"select * from ", TABLE_NAME, " where category_type in (#{categoryTypes}"})
+    List<ProductCategory> findByCategoryTypeIn(@Param("categoryTypes") List<Integer> categoryTypes);
 
     @Insert({"insert into ", TABLE_NAME,"(" ,INSERT_FIELD ,") values(#{categoryName},#{categoryType})"})
     @Options(useGeneratedKeys = true, keyColumn = "category_id", keyProperty = "categoryId")
