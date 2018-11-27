@@ -11,7 +11,7 @@
         (category_name, category_type) values (#{categoryName}, #{categoryType});
     </insert>
     -->
-    <select id="findByCategoryTypeIn" resultType="list" parameterType="com.sell.model.ProductCategory">
+    <select id="findByCategoryTypeIn" resultType="com.sell.model.ProductCategory" parameterType="com.sell.model.ProductCategory">
         select * from <include refid="table_name"/>
         where category_type in
         <foreach collection="categoryTypes" index="index" item="categoryType" open="(" separator="," close=")">
