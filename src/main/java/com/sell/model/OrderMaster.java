@@ -4,8 +4,10 @@ import com.sell.enums.OrderStatusEnum;
 import com.sell.enums.PayStatusEnum;
 import lombok.Data;
 
+import java.beans.Transient;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 public class OrderMaster {//订单主表

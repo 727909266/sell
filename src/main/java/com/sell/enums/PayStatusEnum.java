@@ -3,7 +3,7 @@ package com.sell.enums;
 import lombok.Getter;
 
 @Getter
-public enum PayStatusEnum {
+public enum PayStatusEnum implements CodeEnum{
     UNPAID(1, "未支付"),
     PAID(0, "已支付");
 
