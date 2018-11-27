@@ -11,6 +11,7 @@ public interface ProductCategoryDao {
     //insert，返回值是：新插入行的主键,赋值到实例id
     String TABLE_NAME = "product_category";
     String INSERT_FIELD = "category_name, category_type";
+    String INSERT_VALUE = "(#{categoryName},#{categoryType})";
 
     @Select({"select * from ", TABLE_NAME, " where category_id = #{aaa}"})
     ProductCategory findById(@Param("aaa") int id);
@@ -24,7 +25,7 @@ public interface ProductCategoryDao {
     //@Select({"select * from ", TABLE_NAME, " where category_type in (#{categoryTypes}"})
     List<ProductCategory> findByCategoryTypeIn(@Param("categoryTypes") List<Integer> categoryTypes);
 
-    @Insert({"insert into ", TABLE_NAME,"(" ,INSERT_FIELD ,") values(#{categoryName},#{categoryType})"})
+    @Insert({"insert into ", TABLE_NAME,"(" ,INSERT_FIELD ,") values", INSERT_VALUE})
     @Options(useGeneratedKeys = true, keyColumn = "category_id", keyProperty = "categoryId")
     void saveModel(ProductCategory productCategory);
 

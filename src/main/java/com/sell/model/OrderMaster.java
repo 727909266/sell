@@ -1,12 +1,14 @@
 package com.sell.model;
 
+import com.sell.enums.OrderStatusEnum;
+import com.sell.enums.PayStatusEnum;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Data
-public class OrderMaster {
+public class OrderMaster {//订单主表
     //订单id
     private String orderId;
 
@@ -26,10 +28,10 @@ public class OrderMaster {
     private BigDecimal orderAmount;
 
     //订单状态
-    private Integer orderStatus;
+    private Integer orderStatus = OrderStatusEnum.NEW.getCode();
 
     //支付状态
-    private Integer payStatus;
+    private Integer payStatus = PayStatusEnum.UNPAID.getCode();
 
     //创建时间
     private Timestamp createTime;
