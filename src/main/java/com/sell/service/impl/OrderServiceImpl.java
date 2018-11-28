@@ -18,6 +18,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO create(OrderDTO orderDTO) {
+        //查询商品（数量，单价）
+        orderDTO.getOrderDetailList().forEach(orderDetail -> {
+
+        });
+        //计算总价
+        //写入订单数据库(orderMaster,orderDetail)
+        //扣库存
+
         return null;
     }
 
