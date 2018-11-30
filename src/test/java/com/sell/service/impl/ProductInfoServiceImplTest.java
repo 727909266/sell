@@ -29,7 +29,7 @@ public class ProductInfoServiceImplTest {
 
     @Test
     public void saveModel() throws Exception {
-        ProductInfo productInfo = new ProductInfo(String.valueOf(System.currentTimeMillis()), "牛排", new BigDecimal(3.2), 5, "独一无二的肉", "http://xxxx.jpg", ProductStatusEnum.UP.getCode(), 10);
+        ProductInfo productInfo = new ProductInfo(String.valueOf(System.currentTimeMillis()), "猪排", new BigDecimal(3.2), 5, "独一无二的肉", "http://xxxx.jpg", ProductStatusEnum.UP.getCode(), 3);
         productInfoServiceImpl.saveModel(productInfo);
     }
 
