@@ -58,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
             }
 
             //计算总价
-            BigDecimal orderAmount = orderDetail.getProductPrice()
+            BigDecimal orderAmount = productInfo.getProductPrice()
                     .multiply(new BigDecimal(orderDetail.getProductQuantity()));
             //订单详情入库 orderDetail
             orderDetail.setDetailId(KeyUtil.getUniqueKey());
