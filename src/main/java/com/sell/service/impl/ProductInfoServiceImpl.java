@@ -4,10 +4,14 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sell.dao.ProductInfoDao;
+import com.sell.dto.CartDTO;
+import com.sell.enums.ResultEnum;
+import com.sell.exception.SellException;
 import com.sell.model.ProductInfo;
 import com.sell.service.ProductInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -48,5 +52,24 @@ public class ProductInfoServiceImpl implements ProductInfoService {
         //返回一个查询语句的数量
         //long total = PageHelper.count(() -> productInfoDao.findByProductStatus(10));
         return pageInfoProductInfo.getList();
+    }
+
+    @Override
+    public void increaseStock(List<CartDTO> cartDTOList) {
+
+    }
+
+    @Override
+    @Transactional
+    public void decreaseStock(List<CartDTO> cartDTOList) {
+        cartDTOList.forEach(cartDTO -> {
+            ProductInfo productInfo = productInfoDao.findById(cartDTO.getProductId());
+            Integer number = productInfo.getProductStock() - cartDTO.getProductQuantity();
+            if(productInfo.getProductStock() - cartDTO.getProductQuantity() < 0) {
+                throw new SellException(ResultEnum.PRODUCT_STOCK_ERROR);
+            }
+            productInfo.setProductStock(number);
+            productInfoDao.updateModel(productInfo);
+        });
     }
 }

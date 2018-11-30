@@ -1,5 +1,6 @@
 package com.sell.service;
 
+import com.sell.dto.CartDTO;
 import com.sell.model.ProductInfo;
 
 import java.util.List;
@@ -12,7 +13,11 @@ public interface ProductInfoService {
     void saveModel(ProductInfo productInfo);
     List<ProductInfo> findAll(int page, int size);
     ProductInfo findOne(String id);
+
     //查询所有在架商品列表
+
     //加库存
+    void increaseStock(List<CartDTO> cartDTOList);
     //减库存
+    void decreaseStock(List<CartDTO> cartDTOList);
 }

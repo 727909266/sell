@@ -2,9 +2,11 @@ package com.sell.service.impl;
 
 import com.sell.dao.OrderDetailDao;
 import com.sell.dao.OrderMasterDao;
+import com.sell.dto.CartDTO;
 import com.sell.dto.OrderDTO;
 import com.sell.enums.ResultEnum;
 import com.sell.exception.SellException;
+import com.sell.model.OrderMaster;
 import com.sell.model.ProductInfo;
 import com.sell.service.OrderService;
 import com.sell.service.ProductInfoService;
@@ -12,10 +14,12 @@ import com.sell.util.KeyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +33,7 @@ public class OrderServiceImpl implements OrderService {
     private ProductInfoService productInfoService;
 
     @Override
+    @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
 
         //查询商品（数量，单价）//肯定需要查看该商品库存以及数据库中的价格，不能相信前端传入的价格数据
@@ -65,13 +70,19 @@ public class OrderServiceImpl implements OrderService {
         }).reduce(BigDecimal.ZERO, BigDecimal::add);
 
         //写入订单数据库(orderMaster)
-
-
-
+        OrderMaster orderMaster = new OrderMaster();
+        orderMaster.setOrderId(orderId);
+        orderMaster.setOrderAmount(orderTotalAmount);
+        BeanUtils.copyProperties(orderDTO, orderMaster);
+        orderMasterDao.saveModel(orderMaster);
 
         //扣库存
+        List<CartDTO> cartDTOList =  orderDTO.getOrderDetailList().stream().map(orderDetail ->
+            new CartDTO(orderDetail.getProductId(), orderDetail.getProductQuantity())
+        ).collect(Collectors.toList());
+        productInfoService.decreaseStock(cartDTOList);
 
-        return null;
+        return orderDTO;
     }
 
     @Override
