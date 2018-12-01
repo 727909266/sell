@@ -3,6 +3,7 @@ package com.sell.service.impl;
 import com.sell.dto.OrderDTO;
 import com.sell.model.OrderDetail;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,43 +40,37 @@ public class OrderServiceImplTest {
         List<OrderDetail> orderDetailList = new ArrayList<>();
 
         OrderDetail orderDetail = new OrderDetail();
-        //orderDetail.setProductId();
-        //orderDetail.setProductQuantity();
+        orderDetail.setProductId("1543509967581");
+        orderDetail.setProductQuantity(3);
+        orderDetailList.add(orderDetail);
 
         orderDTO.setOrderDetailList(orderDetailList);
 
         OrderDTO result = orderServiceImpl.create(orderDTO);
         log.info(" [创建订单] result={}", result);
+        Assert.assertNotNull(result);
+    }
 
+    @Test
+    public void findOne() {
+    }
+
+    @Test
+    public void findList(){
+    }
+
+    @Test
+    public void cancel() {
 
     }
 
     @Test
-    public void findOne(String orderId) {
-    }
-
-    @Test
-    public void findList(String buyerOpenid) {
+    public void finish() {
 
     }
 
     @Test
-    public void cancel(OrderDTO orderDTO) {
-
-    }
-
-    @Test
-    public void finish(OrderDTO orderDTO) {
-
-    }
-
-    @Test
-    public void paid(OrderDTO orderDTO) {
-
-    }
-
-    @Test
-    public void findList() {
+    public void paid() {
 
     }
 

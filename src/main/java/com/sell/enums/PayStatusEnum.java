@@ -4,8 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum PayStatusEnum implements CodeEnum{
-    UNPAID(1, "未支付"),
-    PAID(0, "已支付");
+    WAIT(0, "等待支付"),
+    SUCCESS(1, "支付成功");
 
     private int code;
     private String message;

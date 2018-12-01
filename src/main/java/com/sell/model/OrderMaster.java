@@ -33,7 +33,7 @@ public class OrderMaster {//订单主表
     private Integer orderStatus = OrderStatusEnum.NEW.getCode();
 
     //支付状态
-    private Integer payStatus = PayStatusEnum.UNPAID.getCode();
+    private Integer payStatus = PayStatusEnum.WAIT.getCode();
 
     //创建时间
     private Timestamp createTime;

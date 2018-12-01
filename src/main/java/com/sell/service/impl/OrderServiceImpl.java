@@ -4,6 +4,8 @@ import com.sell.dao.OrderDetailDao;
 import com.sell.dao.OrderMasterDao;
 import com.sell.dto.CartDTO;
 import com.sell.dto.OrderDTO;
+import com.sell.enums.OrderStatusEnum;
+import com.sell.enums.PayStatusEnum;
 import com.sell.enums.ResultEnum;
 import com.sell.exception.SellException;
 import com.sell.model.OrderMaster;
@@ -61,9 +63,9 @@ public class OrderServiceImpl implements OrderService {
             BigDecimal orderAmount = productInfo.getProductPrice()
                     .multiply(new BigDecimal(orderDetail.getProductQuantity()));
             //订单详情入库 orderDetail
+            BeanUtils.copyProperties(productInfo, orderDetail);
             orderDetail.setDetailId(KeyUtil.getUniqueKey());
             orderDetail.setOrderId(orderId);
-            BeanUtils.copyProperties(productInfo, orderDetail);
             orderDetailDao.saveModel(orderDetail);
             return orderAmount;
 
@@ -71,9 +73,11 @@ public class OrderServiceImpl implements OrderService {
 
         //写入订单数据库(orderMaster)
         OrderMaster orderMaster = new OrderMaster();
-        orderMaster.setOrderId(orderId);
-        orderMaster.setOrderAmount(orderTotalAmount);
         BeanUtils.copyProperties(orderDTO, orderMaster);
+        orderMaster.setOrderId(orderId);
+        orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());
+        orderMaster.setPayStatus(PayStatusEnum.WAIT.getCode());
+        orderMaster.setOrderAmount(orderTotalAmount);
         orderMasterDao.saveModel(orderMaster);
 
         //扣库存
