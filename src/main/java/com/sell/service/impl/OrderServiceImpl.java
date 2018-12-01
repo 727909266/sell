@@ -8,6 +8,7 @@ import com.sell.enums.OrderStatusEnum;
 import com.sell.enums.PayStatusEnum;
 import com.sell.enums.ResultEnum;
 import com.sell.exception.SellException;
+import com.sell.model.OrderDetail;
 import com.sell.model.OrderMaster;
 import com.sell.model.ProductInfo;
 import com.sell.service.OrderService;
@@ -91,31 +92,48 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO findOne(String orderId) {
-        return null;
+        OrderMaster orderMaster = orderMasterDao.findById(orderId);
+        List<OrderDetail> orderDetailList = orderDetailDao.findByOrderId(orderId);
+        OrderDTO orderDTO = new OrderDTO();
+        BeanUtils.copyProperties(orderMaster, orderDTO);
+        orderDTO.setOrderDetailList(orderDetailList);
+        return orderDTO;
     }
 
     @Override
     public List<OrderDTO> findList(String buyerOpenid) {
-        return null;
+        List<OrderMaster> orderMasterList = orderMasterDao.findByBuyerOpenid(buyerOpenid);
+        List<OrderDTO> orderDTOList = orderMasterList.stream().map(orderMaster -> {
+            List<OrderDetail> orderDetailList = orderDetailDao.findByOrderId(orderMaster.getOrderId());
+            OrderDTO orderDTO = new OrderDTO();
+            BeanUtils.copyProperties(orderMaster, orderDTO);
+            orderDTO.setOrderDetailList(orderDetailList);
+            return orderDTO;
+        }).collect(Collectors.toList());
+        return orderDTOList;
     }
 
     @Override
     public OrderDTO cancel(OrderDTO orderDTO) {
+
         return null;
     }
 
     @Override
     public OrderDTO finish(OrderDTO orderDTO) {
+
         return null;
     }
 
     @Override
     public OrderDTO paid(OrderDTO orderDTO) {
+
         return null;
     }
 
     @Override
     public List<OrderDTO> findList() {
+
         return null;
     }
 }

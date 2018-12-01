@@ -1,10 +1,7 @@
 package com.sell.dao;
 
 import com.sell.model.OrderDetail;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -22,6 +19,5 @@ public interface OrderDetailDao {
 
     @Insert({"insert into ", TABLE_NAME, "(",INSERT_FIELD, ") values", INSERT_VALUE})
     void saveModel(OrderDetail orderDetail);
-
 
 }
