@@ -1,6 +1,7 @@
 package com.sell.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sell.enums.OrderStatusEnum;
 import com.sell.enums.PayStatusEnum;
@@ -10,10 +11,13 @@ import com.sell.util.serializer.Date2LongSerializer;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Data
+//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
     //订单id
     private String orderId;
@@ -45,9 +49,9 @@ public class OrderDTO {
 
     //修改时间
     @JsonSerialize(using = Date2LongSerializer.class)
-    private Timestamp updateTime;
+    private Date updateTime;
 
-    private List<OrderDetail> orderDetailList;
+    private List<OrderDetail> orderDetailList; //= new ArrayList<>(); 如果是空，返回一个空列表则只需要赋1个初始值
 
     @JsonIgnore
     public OrderStatusEnum getOrderStatusEnum() {

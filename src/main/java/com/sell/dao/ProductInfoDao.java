@@ -3,10 +3,7 @@ package com.sell.dao;
 import com.sell.model.ProductCategory;
 import com.sell.model.ProductInfo;
 import com.sell.util.HandleInsertFieldUtil;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -32,5 +29,5 @@ public interface ProductInfoDao {
     void saveModel(ProductInfo productInfo);
 
     @Update({"update ",TABLE_NAME, " set product_stock = #{productStock} where product_id = #{productId}"})
-    void updateModel(ProductInfo productInfo);
+    int updateModel(@Param("productStock") int productStock , @Param("productId")String productId);
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 import java.beans.Transient;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -36,8 +37,8 @@ public class OrderMaster {//订单主表
     private Integer payStatus = PayStatusEnum.WAIT.getCode();
 
     //创建时间
-    private Timestamp createTime;
+    private Date createTime;
 
     //修改时间
-    private Timestamp updateTime;
+    private Date updateTime;
 }

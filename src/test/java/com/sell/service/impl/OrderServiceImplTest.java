@@ -1,6 +1,8 @@
 package com.sell.service.impl;
 
 import com.sell.dto.OrderDTO;
+import com.sell.enums.OrderStatusEnum;
+import com.sell.enums.PayStatusEnum;
 import com.sell.model.OrderDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -24,6 +26,7 @@ public class OrderServiceImplTest {
     private OrderServiceImpl orderService;
 
     private final String BUYER_OPENID = "1101110";
+    private final String ORDER_ID = "1543647103019882437";
 
     @Autowired
     private OrderServiceImpl orderServiceImpl;
@@ -53,25 +56,36 @@ public class OrderServiceImplTest {
 
     @Test
     public void findOne() {
+        OrderDTO result = orderService.findOne(ORDER_ID);
+        log.info("[查询单个订单] result={}", result);
+        Assert.assertEquals(ORDER_ID, result.getOrderId());
     }
 
     @Test
     public void findList(){
+        List<OrderDTO> orderDTOS= orderService.findList(BUYER_OPENID, 0, 2);
+        Assert.assertNotEquals(0, orderDTOS.size());
     }
 
     @Test
     public void cancel() {
-
+        OrderDTO orderDTO = orderService.findOne(ORDER_ID);
+        OrderDTO result = orderService.cancel(orderDTO);
+        Assert.assertEquals(Integer.valueOf(OrderStatusEnum.CANCEL.getCode()), result.getOrderStatus());
     }
 
     @Test
     public void finish() {
-
+        OrderDTO orderDTO = orderService.findOne(ORDER_ID);
+        OrderDTO result = orderService.finish(orderDTO);
+        Assert.assertEquals(Integer.valueOf(OrderStatusEnum.FINISH.getCode()), result.getOrderStatus());
     }
 
     @Test
     public void paid() {
-
+        OrderDTO orderDTO = orderService.findOne(ORDER_ID);
+        OrderDTO result = orderService.paid(orderDTO);
+        Assert.assertEquals(Integer.valueOf(PayStatusEnum.SUCCESS.getCode()), result.getPayStatus());
     }
 
 }

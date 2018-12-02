@@ -1,10 +1,7 @@
 package com.sell.dao;
 
 import com.sell.model.OrderMaster;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,5 +20,11 @@ public interface OrderMasterDao {
 
     @Insert({"insert into ", TABLE_NAME, "(",INSERT_FIELD, ") values", INSERT_VALUE})
     void saveModel(OrderMaster orderMaster);
+
+    @Update({"update ", TABLE_NAME, " set order_status = #{orderStatus} where order_id = #{id}"})
+    int updateOrderStatus(@Param("orderStatus") int orderStatus, @Param("id") String id);
+
+    @Update({"update ", TABLE_NAME, " set pay_status = #{payStatus} where order_id = #{id}"})
+    int updatePayStatus(@Param("payStatus") int payStatus, @Param("id") String id);
 
 }

@@ -3,6 +3,7 @@ package com.sell.model;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
@@ -21,7 +22,7 @@ public class OrderDetail {//订单详情表
     private Integer productQuantity;
     //小图
     private String productIcon;
-    private Timestamp createTime;
-    private Timestamp updateTime;
+    private Date createTime;
+    private Date updateTime;
     
 }
