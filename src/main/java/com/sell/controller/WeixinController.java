@@ -5,12 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by huhaoran on 2018/12/5 0005.
  */
 @RestController
-@RequestMapping("weixin")
+@RequestMapping("/weixin")
 @Slf4j
 public class WeixinController {
 
@@ -18,5 +19,9 @@ public class WeixinController {
     public void auth(@RequestParam("code") String code) {
        log.info("进入auth方法。。。。");
        log.info("code={}",code);
+       String url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxed5d377f07de1964&secret=b41800a563a8a73c7b5ea30104860249&code=" + code + "&grant_type=authorization_code";
+        RestTemplate restTemplate = new RestTemplate();
+        String response = restTemplate.getForObject(url, String.class);
+        log.info("response={}", response);
     }
 }

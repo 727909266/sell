@@ -21,8 +21,11 @@ pagehelper:
   params: count=countSql #为了支持startPage(Object params)方法，增加了该参数来配置参数映射，用于从对象中根据属性名取值， 可以配置 pageNum,pageSize,count,pageSizeZero,reasonable，不配置映射的用默认值， 默认值为pageNum=pageNum;pageSize=pageSize;count=countSql;reasonable=reasonable;pageSizeZero=pageSizeZero。
 
 
-
-
 server:
   servlet:
     context-path: /sell
+
+
+wechat:
+  mpAppId: wxed5d377f07de1964
+  mpAppSecret: b41800a563a8a73c7b5ea30104860249
