@@ -9,6 +9,8 @@ import com.sell.service.BuyerService;
 import com.sell.service.OrderService;
 import com.sell.util.ResultVOUtil;
 import com.sell.viewobject.ResultVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
@@ -27,6 +29,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/buyer/order")
+@Api(description = "buyer order restful api")
 @Slf4j
 public class BuyerOrderController {
     @Autowired
@@ -34,6 +37,7 @@ public class BuyerOrderController {
     @Autowired
     private BuyerService buyerService;
     //创建订单
+    @ApiOperation(value = "创建订单")
     @PostMapping("/create")
     public ResultVO create(@Valid OrderForm orderForm,
                                                 BindingResult bindingResult) {
@@ -67,6 +71,7 @@ public class BuyerOrderController {
     }
     //订单详情
     @GetMapping("/detail")
+    @ApiOperation(value = "订单详情")
     public ResultVO datail(@RequestParam("openid") String openid,
                            @RequestParam("orderId") String orderId) {
         OrderDTO orderDTO = buyerService.findOrderOne(openid, orderId);
@@ -75,6 +80,7 @@ public class BuyerOrderController {
 
     //取消订单
     @GetMapping("/cancel")
+    @ApiOperation(value = "取消订单")
     public ResultVO cancel(@RequestParam("openid") String openid,
                            @RequestParam("orderId") String orderId) {
         buyerService.cancelOrder(openid, orderId);

@@ -22,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<springfox.swagger.version>2.7.0</springfox.swagger.version>
 	</properties>
 
 	<dependencies>
@@ -111,6 +112,18 @@
 			<groupId>cn.springboot</groupId>
 			<artifactId>best-pay-sdk</artifactId>
 			<version>1.1.0</version>
+		</dependency>
+		<!--Swagger2,与Spring MVC程序配合组织 RESTful API文档-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox.swagger.version}</version>
+		</dependency>
+		<!-- swagger2 文档UI-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${springfox.swagger.version}</version>
 		</dependency>
     </dependencies>
 
