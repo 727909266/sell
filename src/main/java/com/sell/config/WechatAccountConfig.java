@@ -29,4 +29,9 @@ public class WechatAccountConfig {
      */
 
     private String keyPath;
+
+    /**
+     * 微信支付异步通知地址
+     */
+    private String notifyUrl;
 }
