@@ -24,5 +24,5 @@ public interface OrderService {
     OrderDTO paid(OrderDTO orderDTO);
 
     /** 查询订单列表. */
-    List<OrderDTO> findList();
+    List<OrderDTO> findList(int page, int size);
 }

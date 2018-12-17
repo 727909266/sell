@@ -14,6 +14,7 @@ import com.sell.model.OrderDetail;
 import com.sell.model.OrderMaster;
 import com.sell.model.ProductInfo;
 import com.sell.service.OrderService;
+import com.sell.service.PayService;
 import com.sell.service.ProductInfoService;
 import com.sell.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +38,9 @@ public class OrderServiceImpl implements OrderService {
     private OrderDetailDao orderDetailDao;
     @Autowired
     private OrderMasterDao orderMasterDao;
+    @Autowired
+    private PayService payService;
+
     @Autowired
     private ProductInfoService productInfoService;
 
@@ -151,7 +155,8 @@ public class OrderServiceImpl implements OrderService {
 
         //如果已经支付，退款
         if(orderDTO.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())) {
-            //TODO
+            payService.refund(orderDTO);
+
         }
         return orderDTO;
     }
@@ -197,8 +202,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderDTO> findList() {
-
-        return null;
+    public List<OrderDTO> findList(int page, int size) {
+        PageInfo<OrderMaster> pageInfoOrderMaster = PageHelper.startPage(page, size).doSelectPageInfo(() -> orderMasterDao.findAll());
+        List<OrderDTO> orderDTOList = pageInfoOrderMaster.getList().stream().map(orderMaster -> {
+            OrderDTO orderDTO = new OrderDTO();
+            BeanUtils.copyProperties(orderMaster, orderDTO);
+            //orderDTO.setOrderDetailList(orderDetailList);
+            return orderDTO;
+        }).collect(Collectors.toList());
+        return orderDTOList;
     }
 }

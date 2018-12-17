@@ -15,6 +15,9 @@ public interface OrderMasterDao {
     @Select({"select * from ", TABLE_NAME, " where buyer_openid = #{buyerOpenid}"})
     List<OrderMaster> findByBuyerOpenid(@Param("buyerOpenid") String buyerOpenid);
 
+    @Select({"select * from ", TABLE_NAME})
+    List<OrderMaster> findAll();
+
     @Select({"select * from ", TABLE_NAME, " where order_id = #{orderId}"})
     OrderMaster findById(@Param("orderId") String orderId);
 
