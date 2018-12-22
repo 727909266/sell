@@ -1,5 +1,5 @@
 package com.sell.enums;
 
-public interface CodeEnum {
-    int getCode();
+public interface CodeEnum<T> {
+    T getCode();
 }
