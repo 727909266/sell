@@ -30,4 +30,7 @@ public interface ProductInfoDao {
 
     @Update({"update ",TABLE_NAME, " set product_stock = #{productStock} where product_id = #{productId}"})
     int updateModel(@Param("productStock") int productStock , @Param("productId")String productId);
+
+    @Update({"update ",TABLE_NAME, " set product_status = #{productStatus} where product_id = #{productId}"})
+    int updateSale(@Param("productStatus") int productStatus , @Param("productId") String productId);
 }

@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sell.dao.ProductInfoDao;
 import com.sell.dto.CartDTO;
+import com.sell.enums.ProductStatusEnum;
 import com.sell.enums.ResultEnum;
 import com.sell.exception.SellException;
 import com.sell.model.ProductInfo;
@@ -22,6 +23,33 @@ import java.util.List;
 public class ProductInfoServiceImpl implements ProductInfoService {
     @Autowired
     private ProductInfoDao productInfoDao;
+
+    @Override
+    public int onSale(String productId) {
+        ProductInfo productInfo = productInfoDao.findById(productId);
+        if(productInfo == null) {
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if(productInfo.getProductStatusEnum() == ProductStatusEnum.UP){
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        //更新
+        return productInfoDao.updateSale(ProductStatusEnum.UP.getCode(), productId);
+    }
+
+    @Override
+    public int offSale(String productId) {
+        ProductInfo productInfo = productInfoDao.findById(productId);
+        if(productInfo == null) {
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if(productInfo.getProductStatusEnum() == ProductStatusEnum.DOWN){
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        //更新
+        return productInfoDao.updateSale(ProductStatusEnum.DOWN.getCode(), productId);
+    }
+
     @Override
     public List<ProductInfo> findByProductStatus(int status) {
         return productInfoDao.findByProductStatus(status);
