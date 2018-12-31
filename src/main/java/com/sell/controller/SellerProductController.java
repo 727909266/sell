@@ -2,10 +2,13 @@ package com.sell.controller;
 
 import com.sell.dto.OrderDTO;
 import com.sell.exception.SellException;
+import com.sell.model.ProductCategory;
 import com.sell.model.ProductInfo;
+import com.sell.service.ProductCategoryService;
 import com.sell.service.ProductInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +25,8 @@ import java.util.Map;
 public class SellerProductController {
     @Autowired
     private ProductInfoService productInfoService;
+    @Autowired
+    private ProductCategoryService productCategoryService;
 
     /**
      * @param page 第几页 从1开始
@@ -80,5 +85,17 @@ public class SellerProductController {
 
         map.put("url", "sell/seller/product/list");
         return new ModelAndView("common/success", map);
+    }
+
+    @GetMapping("/index")
+    public ModelAndView index(@RequestParam(value = "productId", required = false) String productId,
+                 Map<String, Object> map) {
+        if(!StringUtils.isEmpty(productId)) {
+            ProductInfo productInfo = productInfoService.findOne(productId);
+        }
+        //查询所有的类目
+        List<ProductCategory> productCategoryList = productCategoryService.findAll();
+        map.put("productCategoryList", productCategoryList);
+        return new ModelAndView("product/index", map);
     }
 }
