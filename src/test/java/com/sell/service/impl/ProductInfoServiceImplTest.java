@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -29,7 +30,7 @@ public class ProductInfoServiceImplTest {
 
     @Test
     public void saveModel() throws Exception {
-        ProductInfo productInfo = new ProductInfo(String.valueOf(System.currentTimeMillis()), "猪排", new BigDecimal(3.2), 5, "独一无二的肉", "http://xxxx.jpg", ProductStatusEnum.UP.getCode(), 3);
+        ProductInfo productInfo = new ProductInfo(String.valueOf(System.currentTimeMillis()), "猪排", new BigDecimal(3.2), 5, "独一无二的肉", "http://xxxx.jpg", ProductStatusEnum.UP.getCode(), 3, new Date(), new Date());
         productInfoServiceImpl.saveModel(productInfo);
     }
 

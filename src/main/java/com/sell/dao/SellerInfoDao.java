@@ -12,14 +12,14 @@ import java.util.List;
 @Mapper
 public interface SellerInfoDao {
     String TABLE_NAME = "seller_info";
-    String INSERT_FIELD = "id, username, password, openid";
+    String INSERT_FIELD = "seller_id, username, password, openid";
     String INSERT_VALUE = "(#{id}, #{username}, #{password}, #{openid})";
 
-    @Select({"select * from ", TABLE_NAME, " where order_id = #{orderId}"})
-    List<SellerInfo> findByOrderId(@Param("orderId") String orderId);
+    @Select({"select * from ", TABLE_NAME, " where openid = #{openId}"})
+    SellerInfo findByOpenId(@Param("openId") String openId);
 
-    @Select({"select * from ", TABLE_NAME, " where detail_id = #{detailId}"})
-    SellerInfo findById(@Param("detailId") String detailId);
+    @Select({"select * from ", TABLE_NAME, " where seller_id = #{sellerId}"})
+    SellerInfo findById(@Param("sellerId") String sellerId);
 
     @Insert({"insert into ", TABLE_NAME, "(",INSERT_FIELD, ") values", INSERT_VALUE})
     void saveModel(SellerInfo sellerInfo);

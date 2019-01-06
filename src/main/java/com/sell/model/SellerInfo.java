@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 
 @Data
 public class SellerInfo {
-    private String id;
+    private String sellerId;
     private String username;
     private String password;
     private String openid;

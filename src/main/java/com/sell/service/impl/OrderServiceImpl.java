@@ -16,6 +16,7 @@ import com.sell.model.ProductInfo;
 import com.sell.service.OrderService;
 import com.sell.service.PayService;
 import com.sell.service.ProductInfoService;
+import com.sell.service.PushMessageService;
 import com.sell.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -24,10 +25,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,6 +38,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderMasterDao orderMasterDao;
     @Autowired
     private PayService payService;
+    @Autowired
+    private PushMessageService pushMessageService;
 
     @Autowired
     private ProductInfoService productInfoService;
@@ -162,6 +162,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional
     public OrderDTO finish(OrderDTO orderDTO) {
         //判断订单状态
         if(!orderDTO.getOrderStatus().equals(OrderStatusEnum.NEW.getCode())) {
@@ -175,6 +176,10 @@ public class OrderServiceImpl implements OrderService {
             log.error("[完结订单] 更新失败 orderDTO={}", orderDTO);
             throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
         }
+
+        //推送微信模板消息
+        pushMessageService.orderStatus(orderDTO);
+
         return orderDTO;
     }
 

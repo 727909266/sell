@@ -8,6 +8,10 @@ spring:
     show-sql: true
   jackson:
     default-property-inclusion: non_null #所有的类加上相当于@JsonInclude(JsonInclude.Include.NON_NULL)
+  redis:
+    host:
+    port:
+    password:
 
 mybatis:
     configuration:
@@ -33,3 +37,14 @@ wechat:
   mchKey: C5245D70627C1F8E9964D494B0735025
   keyPath: /xxx/xxxxx/xxx/h5.p12
   notifyUrl: http://sell.natapp4.cc/sell/pay/notify
+
+  openAppId:
+  openAppSecret:
+
+  templeteId:
+    orderStatus:
+
+ProjectUrl:
+  wechatMpAuthorize: http://huhaoransell.natapp1.cc
+  wechatOpenAuthorize: http://huhaoransell.natapp1.cc
+  sell: http://huhaoransell.natapp1.cc
