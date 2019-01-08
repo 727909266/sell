@@ -13,10 +13,7 @@ import com.sell.exception.SellException;
 import com.sell.model.OrderDetail;
 import com.sell.model.OrderMaster;
 import com.sell.model.ProductInfo;
-import com.sell.service.OrderService;
-import com.sell.service.PayService;
-import com.sell.service.ProductInfoService;
-import com.sell.service.PushMessageService;
+import com.sell.service.*;
 import com.sell.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -40,9 +37,10 @@ public class OrderServiceImpl implements OrderService {
     private PayService payService;
     @Autowired
     private PushMessageService pushMessageService;
-
     @Autowired
     private ProductInfoService productInfoService;
+    @Autowired
+    private WebSocket webSocket;
 
     @Override
     @Transactional
@@ -95,6 +93,9 @@ public class OrderServiceImpl implements OrderService {
             new CartDTO(orderDetail.getProductId(), orderDetail.getProductQuantity())
         ).collect(Collectors.toList());
         productInfoService.decreaseStock(cartDTOList);
+
+        //发送webSocket消息
+        webSocket.sendMessage(orderDTO.getOrderId());
 
         return orderDTO;
     }
