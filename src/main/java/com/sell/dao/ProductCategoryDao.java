@@ -4,6 +4,7 @@ import com.sell.model.ProductCategory;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface ProductCategoryDao {
@@ -29,6 +30,22 @@ public interface ProductCategoryDao {
     @Options(useGeneratedKeys = true, keyColumn = "category_id", keyProperty = "categoryId")
     void saveModel(ProductCategory productCategory);
 
-    @Update({"update ", TABLE_NAME, " set category_type = #{categoryType} where category_id = #{id}"})
+    /*
+    @Insert({"insert into ", TABLE_NAME,"(" ,INSERT_FIELD ,") values category_type = #{categoryType, jdbcType = VARCHAR}"})
+    int insertByMap(Map<String, Object> map);
+*/
+
+    @Select({"select * from ", TABLE_NAME, " where category_type = #{categoryType}"})
+    @Results({
+            @Result(column = "category_id", property = "categoryId"),
+            @Result(column = "category_name", property = "categoryName"),
+            @Result(column = "category_type", property = "categoryType")
+    })
+    ProductCategory findByCategoryTypeResult(int categoryType);
+
+  @Update({"update ", TABLE_NAME, " set category_type = #{categoryType} where category_id = #{id}"})
     int updateCategoryType(@Param("categoryType") int categoryType, @Param("id") int id);
+
+
+
 }

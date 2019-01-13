@@ -17,6 +17,7 @@ mybatis:
     configuration:
       map-underscore-to-camel-case: true
       use-generated-keys: true
+    mapper-locations:  classpath:com.sell.dao/*.xml
 
 pagehelper:
   helper-dialect: mysql
@@ -48,3 +49,7 @@ ProjectUrl:
   wechatMpAuthorize: http://huhaoransell.natapp1.cc
   wechatOpenAuthorize: http://huhaoransell.natapp1.cc
   sell: http://huhaoransell.natapp1.cc
+
+logging:
+  level:
+
