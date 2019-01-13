@@ -10,6 +10,7 @@ import com.sell.viewobject.ProductVO;
 import com.sell.viewobject.ResultVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +48,18 @@ public class BuyerProductController {
         return resultVO;
     }
 
+/*
+    @Cacheable(cacheNames = "product", key = "#sellerId", condition = "#sellerId.length() > 3", unless = "#result.getCode() != 0")
+    //ResultVO中code = 0则进行缓存
+    //动态生成key，SPEL表达式
+    //如果条件成立，对结果进行缓存
+    public ResultVO list(String sellerId) {
+
+    }
+*/
+
     @GetMapping("/list")
+    @Cacheable(cacheNames = "product", key = "123")
     public ResultVO list() {
         //1.查询所有上架商品
         List<ProductInfo> productInfos = productInfoService.findAll(0, 100);

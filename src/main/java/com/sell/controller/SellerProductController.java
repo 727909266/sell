@@ -9,6 +9,9 @@ import com.sell.service.ProductCategoryService;
 import com.sell.service.ProductInfoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -27,6 +30,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/seller/product")
+@CacheConfig(cacheNames = "product")  //下面使用时cacheNames可以不填写，默认为该值
 public class SellerProductController {
     @Autowired
     private ProductInfoService productInfoService;
@@ -113,6 +117,10 @@ public class SellerProductController {
      * @return
      */
     @PostMapping("/save")
+    //@CachePut(cacheNames = "product", key = "123") //缓存的ResultVO，如果修改缓存变成了ModelAndView肯定不行，更换注解。
+    //如果一定想用cachePut注解，可以在serviceImpl层进行缓存的操作
+    //如果不填写key，或者key为空，则默认为传入的参数名
+    @CacheEvict(cacheNames = "product", key = "123") //如果修改，那么删除redis中的key
     public ModelAndView save(@Valid ProductForm productForm,
                              BindingResult bindingResult,
                              Map<String, Object> map) {

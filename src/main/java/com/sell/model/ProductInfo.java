@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -17,8 +18,9 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductInfo {
+public class ProductInfo implements Serializable {
 
+    private static final long serialVersionUID = 1726244617103013908L;
     private String productId; //随机字符串主键
     private String productName;//名字
     private BigDecimal productPrice;//单价

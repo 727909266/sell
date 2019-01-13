@@ -145,6 +145,8 @@
     </dependencies>
 
 	<build>
+		<!--打包后的包名 sell.jar-->
+		<finalName>sell</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
